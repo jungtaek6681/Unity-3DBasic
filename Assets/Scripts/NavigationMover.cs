@@ -8,6 +8,7 @@ using UnityEngine.Apple;
 public class NavigationMover : MonoBehaviour
 {
     private NavMeshAgent agent;
+	private PlayerData data;
 
 	[SerializeField]
 	private Vector3 destination;
@@ -15,6 +16,7 @@ public class NavigationMover : MonoBehaviour
 	private void Awake()
 	{
 		agent = GetComponent<NavMeshAgent>();
+		data = GetComponent<PlayerData>();
 	}
 
 	private void Update()
@@ -33,5 +35,6 @@ public class NavigationMover : MonoBehaviour
 		}
 
 		agent.destination = destination;
+		data.speed = agent.velocity.magnitude;
 	}
 }
